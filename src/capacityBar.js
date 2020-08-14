@@ -5,6 +5,7 @@ function CapacityBar({ width, height, data }) {
     const ref = useRef();
 
     useEffect(() => {
+        console.log(d3.max(data))
         const svg = d3.select(ref.current)
             .attr("width", width)
             .attr("height", height)
