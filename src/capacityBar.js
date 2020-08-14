@@ -20,8 +20,8 @@ function CapacityBar({ width, height, data }) {
         const svg = d3.select(ref.current);
         var selection = svg.selectAll("rect").data(data);
         var yScale = d3.scaleLinear()
-            .domain([0, d3.max(data)])
-            .range([0, height - 100]);
+            .domain([0, 10])
+            .range([0, height]);
 
         selection
             .transition().duration(300)
@@ -38,7 +38,7 @@ function CapacityBar({ width, height, data }) {
             .attr("fill", "orange")
             .transition().duration(300)
             .attr("height", (d) => yScale(d))
-            .attr("y", (d) => height - yScale(d))
+            .attr("y", (d) => yScale(d))
 
         selection
             .exit()
