@@ -9,9 +9,9 @@ const DynamicProgrammingTable = ({ numRows, numCols }) => {
             <table>
               <thead>
                   <tr>
-                      <th></th>
+                      <th className="dummy-header"></th>
                 {dpTable[0].map((_, i) => (
-                  <th>{i}</th>
+                  <th className="horizontal-header">{i}</th>
                 ))}
                   </tr>
               </thead>
@@ -19,9 +19,9 @@ const DynamicProgrammingTable = ({ numRows, numCols }) => {
                 {dpTable.map( (row, idx) => {
                   return (
                     <tr>
-                      <th>{idx}</th>
+                      <th className="vertical-header">{idx}</th>
                       {
-                          row.map(val => <td>{val}</td>)
+                          row.map(val => <td className="data-point">{val}</td>)
                       }
                     </tr>
                   );

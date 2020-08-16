@@ -9,3 +9,18 @@
     justify-content: space-around;
     padding-top: 30px;
 }
+
+/* table */
+
+.vertical-header {
+    padding-right: 15px;
+}
+
+.horizontal-header {
+    padding-bottom: 10px;
+}
+
+td {
+    padding: 5px;
+    text-align: center;
+}
