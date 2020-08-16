@@ -10,16 +10,18 @@ const Knapsack = () => {
     const weights = [[2], [3], [6], [7]]
     const values = [[1], [4], [5], [6]]
 
+    // on mount, set max capacity for this input to be 10
     useEffect(() => {
         setMaxCapacity(10)
         changeData();
     }, []);
 
+    // update the data if the idx changes
     useEffect(() => {
-        console.log('hi')
         setData(weights[i]);
     }, [i]) 
 
+    // to change idx of current data
     const changeData = () => {
         if (i === weights.length - 1) {
             setI(0)
@@ -30,11 +32,13 @@ const Knapsack = () => {
 
 
     return (
-        <div>
-            <h2>Graphs with React</h2>
-            <button onClick={changeData}>Change Data</button>
-            <CapacityChart width={40} height={500} data={data} maxCapacity={maxCapacity} />
-            <span>{data[0]}</span>
+        <div className="knapsack-outer">
+            <div className="knapsack-inner">
+                <button onClick={changeData}>Change Data</button>
+                <CapacityChart width={40} height={500} data={data} maxCapacity={maxCapacity} />
+                <span>{data[0]}</span>
+            </div>
+            <p>the table goes here</p>
         </div>
     );
 }
