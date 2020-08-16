@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import CapacityChart from './capacityBar'
 import 'babel-polyfill'
+import DynamicProgrammingTable from './dpTable';
 
 var i = 0;
 const Knapsack = () => {
@@ -38,7 +39,7 @@ const Knapsack = () => {
                 <CapacityChart width={40} height={500} data={data} maxCapacity={maxCapacity} />
                 <span>{data[0]}</span>
             </div>
-            <p>the table goes here</p>
+            <DynamicProgrammingTable numRows={5} numCols={10} />
         </div>
     );
 }
