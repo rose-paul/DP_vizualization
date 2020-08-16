@@ -34,6 +34,12 @@ const Knapsack = () => {
 
     return (
         <div className="knapsack-outer">
+            <div>
+                <h3>Input</h3>
+                <p>weights: {weights}</p>
+                <p>values: {values}</p>
+                <p>capacity: {maxCapacity}</p>
+            </div>
             <div className="knapsack-inner">
                 <button onClick={changeData}>Change Data</button>
                 <CapacityChart width={40} height={500} data={data} maxCapacity={maxCapacity} />
