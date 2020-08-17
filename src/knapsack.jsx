@@ -2,20 +2,38 @@ import React, {useState, useEffect} from 'react';
 import CapacityChart from './capacityBar'
 import 'babel-polyfill'
 import DynamicProgrammingTable from './dpTable';
+import knapsackProblem from './knapsackProblem';
 
-var i = 0;
 const Knapsack = () => {
     const [data, setData] = useState([]);
     const [maxCapacity, setMaxCapacity] = useState(10);
     const [i, setI] = useState(0)
     const weights = [[2], [3], [6], [7]]
     const values = [[1], [4], [5], [6]]
-
+    const [dpTable, setTable] = useState();
+    
     // on mount, set max capacity for this input to be 10
     useEffect(() => {
+        const loop = knapsackProblem(
+            [
+                [1, 2],
+                [4, 3],
+                [5, 6],
+                [6, 7],
+            ],
+            10
+        )
+        let startAlgo = setInterval(setTable(loop()), 1000)
         setMaxCapacity(10)
         changeData();
+        return () => {
+            clearInterval(startAlgo);
+        }
     }, []);
+
+    useEffect(() => {
+
+    }, [dpTable])
 
     // update the data if the idx changes
     useEffect(() => {
@@ -31,6 +49,16 @@ const Knapsack = () => {
         setI(i + 1);
     }
 
+    // const dpTable = knapsackProblem(
+    //   [
+    //     [1, 2],
+    //     [4, 3],
+    //     [5, 6],
+    //     [6, 7],
+    //   ],
+    //   10
+    // );
+
 
     return (
         <div className="knapsack-outer">
@@ -45,7 +73,7 @@ const Knapsack = () => {
                 <CapacityChart width={40} height={500} data={data} maxCapacity={maxCapacity} />
                 <span>{data[0]}</span>
             </div>
-            <DynamicProgrammingTable numRows={5} numCols={10} />
+            <DynamicProgrammingTable numRows={5} numCols={10} dpTable={dpTable} />
         </div>
     );
 }

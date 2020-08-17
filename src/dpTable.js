@@ -1,9 +1,16 @@
 import React from "react";
+import knapsackProblem from "./knapsackProblem";
 
 
-const DynamicProgrammingTable = ({ numRows, numCols }) => {
-    const dpTable = new Array(numRows).fill().map( el => new Array(numCols+1).fill(0));
-    return (
+const DynamicProgrammingTable = ({ numRows, numCols, dpTable}) => {
+    // const dpTable = new Array(numRows).fill().map( el => new Array(numCols+1).fill(0));
+    // sleep 1 at end of each loop
+
+    React.useEffect(() => {
+    }, [dpTable])
+
+
+    return dpTable !== undefined ? (
         <div>
             <h3>Items (left), Capacity (top)</h3>
             <table>
@@ -29,7 +36,9 @@ const DynamicProgrammingTable = ({ numRows, numCols }) => {
               </tbody>
             </table>
         </div>
-    );
+    ) : (
+      <p>updating</p>
+    )
 }
 
 export default DynamicProgrammingTable;
