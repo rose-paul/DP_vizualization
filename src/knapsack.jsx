@@ -33,7 +33,7 @@ const Knapsack = ({stepFunc}) => {
 
     // to change idx of current data
     const changeData = () => {
-        if (dpTable && i === dpTable.length - 1) {
+        if (i === weights.length - 1) {
             return;
         }
         setI(i + 1);
