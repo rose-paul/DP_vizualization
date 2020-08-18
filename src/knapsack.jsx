@@ -19,7 +19,8 @@ const Knapsack = ({stepFunc}) => {
 
     // update the data if the idx changes
     useEffect(() => {
-        setData(weights[i]);
+        setData([weights[i], values[i]]);
+
     }, [i]) 
 
     // update the table if the algorithm iteration changes
@@ -49,7 +50,7 @@ const Knapsack = ({stepFunc}) => {
             </div>
             <div className="knapsack-inner">
                 <CapacityChart width={40} height={500} data={data} maxCapacity={maxCapacity} />
-                <span>{data[0]}</span>
+                <span>currItemWeight: {data[0]}, currItemValue: {data[1]}</span>
             </div>
             <DynamicProgrammingTable numRows={5} numCols={10} dpTable={dpTable} />
             <button onClick={() => setalgoI(oldI => oldI+1)}>Next!</button>
