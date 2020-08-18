@@ -13,10 +13,8 @@ const Knapsack = ({stepFunc}) => {
     const [dpTable, setTable] = useState();
 
     useEffect(() => {
-        stepFunc()
         setTable(stepFunc());
         setMaxCapacity(10)
-        changeData();
     }, []);
 
     // update the data if the idx changes
@@ -27,12 +25,15 @@ const Knapsack = ({stepFunc}) => {
     // update the table if the algorithm iteration changes
     useEffect(() => {
         setTable(stepFunc());
+        if (dpTable && algoI === dpTable[0].length - 2) {
+            setalgoI(0)
+            changeData();
+        }
     }, [algoI])
 
     // to change idx of current data
     const changeData = () => {
-        if (i === weights.length - 1) {
-            setI(0)
+        if (dpTable && i === dpTable.length) {
             return;
         }
         setI(i + 1);
