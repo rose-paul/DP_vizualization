@@ -26,10 +26,7 @@ const Knapsack = ({stepFunc}) => {
     useEffect(() => {
         setTable(stepFunc());
         // FIX BELOW LOGIC, needs some modulo, setalgoI called here doubles up stepFunc
-        if (dpTable && (algoI % dpTable[0].length - 1) === 0) {
-            console.log(algoI)
-            console.log(dpTable[0].length - 2)
-            console.log(algoI % dpTable[0].length - 2)
+        if (dpTable && algoI % (dpTable[0].length - 1) === 0) {
             changeData();
         }
     }, [algoI])
