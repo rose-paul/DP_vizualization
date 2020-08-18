@@ -2,43 +2,31 @@ import React, {useState, useEffect} from 'react';
 import CapacityChart from './capacityBar'
 import 'babel-polyfill'
 import DynamicProgrammingTable from './dpTable';
-import knapsackProblem from './knapsackProblem';
 
-const Knapsack = () => {
+const Knapsack = ({stepFunc}) => {
     const [data, setData] = useState([]);
     const [maxCapacity, setMaxCapacity] = useState(10);
     const [i, setI] = useState(0)
     const weights = [[2], [3], [6], [7]]
     const values = [[1], [4], [5], [6]]
+    const [algoI, setalgoI] = useState(0);
     const [dpTable, setTable] = useState();
-    
-    // on mount, set max capacity for this input to be 10
+
     useEffect(() => {
-        const loop = knapsackProblem(
-            [
-                [1, 2],
-                [4, 3],
-                [5, 6],
-                [6, 7],
-            ],
-            10
-        )
-        let startAlgo = setInterval(setTable(loop()), 1000)
+        setTable(stepFunc());
         setMaxCapacity(10)
         changeData();
-        return () => {
-            clearInterval(startAlgo);
-        }
     }, []);
-
-    useEffect(() => {
-
-    }, [dpTable])
 
     // update the data if the idx changes
     useEffect(() => {
         setData(weights[i]);
     }, [i]) 
+
+    // update the table if the algorithm iteration changes
+    useEffect(() => {
+        setTable(stepFunc());
+    }, [algoI])
 
     // to change idx of current data
     const changeData = () => {
@@ -48,17 +36,6 @@ const Knapsack = () => {
         }
         setI(i + 1);
     }
-
-    // const dpTable = knapsackProblem(
-    //   [
-    //     [1, 2],
-    //     [4, 3],
-    //     [5, 6],
-    //     [6, 7],
-    //   ],
-    //   10
-    // );
-
 
     return (
         <div className="knapsack-outer">
@@ -74,6 +51,7 @@ const Knapsack = () => {
                 <span>{data[0]}</span>
             </div>
             <DynamicProgrammingTable numRows={5} numCols={10} dpTable={dpTable} />
+            <button onClick={() => setalgoI(oldI => oldI+1)}>Next!</button>
         </div>
     );
 }
