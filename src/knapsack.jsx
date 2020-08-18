@@ -25,15 +25,16 @@ const Knapsack = ({stepFunc}) => {
     // update the table if the algorithm iteration changes
     useEffect(() => {
         setTable(stepFunc());
-        if (dpTable && algoI === dpTable[0].length - 2) {
-            setalgoI(0)
-            changeData();
-        }
+        // FIX BELOW LOGIC
+        // if (dpTable && algoI === dpTable[0].length - 2) {
+        //     setalgoI(0)
+        //     changeData();
+        // }
     }, [algoI])
 
     // to change idx of current data
     const changeData = () => {
-        if (dpTable && i === dpTable.length) {
+        if (dpTable && i === dpTable.length - 1) {
             return;
         }
         setI(i + 1);
