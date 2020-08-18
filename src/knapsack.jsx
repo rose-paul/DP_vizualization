@@ -25,11 +25,13 @@ const Knapsack = ({stepFunc}) => {
     // update the table if the algorithm iteration changes
     useEffect(() => {
         setTable(stepFunc());
-        // FIX BELOW LOGIC
-        // if (dpTable && algoI === dpTable[0].length - 2) {
-        //     setalgoI(0)
-        //     changeData();
-        // }
+        // FIX BELOW LOGIC, needs some modulo, setalgoI called here doubles up stepFunc
+        if (dpTable && (algoI % dpTable[0].length - 1) === 0) {
+            console.log(algoI)
+            console.log(dpTable[0].length - 2)
+            console.log(algoI % dpTable[0].length - 2)
+            changeData();
+        }
     }, [algoI])
 
     // to change idx of current data
@@ -49,7 +51,6 @@ const Knapsack = ({stepFunc}) => {
                 <p>capacity: {maxCapacity}</p>
             </div>
             <div className="knapsack-inner">
-                <button onClick={changeData}>Change Data</button>
                 <CapacityChart width={40} height={500} data={data} maxCapacity={maxCapacity} />
                 <span>{data[0]}</span>
             </div>
