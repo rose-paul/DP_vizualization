@@ -13,6 +13,7 @@ const Knapsack = ({stepFunc}) => {
     const [dpTable, setTable] = useState();
 
     useEffect(() => {
+        stepFunc()
         setTable(stepFunc());
         setMaxCapacity(10)
         changeData();
