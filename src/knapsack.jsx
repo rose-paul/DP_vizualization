@@ -47,14 +47,16 @@ const Knapsack = ({stepFunc}) => { // eventually, take props from user input
 
     return (
         <div className="knapsack-outer">
-            <ProblemData weights={weights} values={values} capacity={maxCapacity} />
-            <div className="knapsack-inner">
+            <ProblemData weights={weights} values={values} maxCapacity={maxCapacity} />
+            <div className="knapsack-inner--capacity">
                 {/* add current bag capacity here */}
                 <CapacityChart width={40} height={500} data={[data[0]]} maxCapacity={maxCapacity} />
                 <span>currItemWeight: {data[0]}, currItemValue: {data[1]}</span>
             </div>
-            <DynamicProgrammingTable dpTable={dpTable} currCoords={currCoords} currWeight={data[0]} />
-            <button onClick={() => setalgoI(oldI => oldI+1)}>Next!</button>
+            <div className="knapsack-inner--steps">
+                <DynamicProgrammingTable dpTable={dpTable} currCoords={currCoords} currWeight={data[0]} />
+                <button onClick={() => setalgoI(oldI => oldI+1)}>Next!</button>
+            </div>
         </div>
     );
 }
