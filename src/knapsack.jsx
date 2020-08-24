@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react';
 import CapacityChart from './capacityBar'
 import 'babel-polyfill'
 import DynamicProgrammingTable from './dpTable';
+import createTable from './createTable';
 
 const Knapsack = ({stepFunc}) => {
     const [data, setData] = useState([]);
@@ -14,9 +15,7 @@ const Knapsack = ({stepFunc}) => {
     const [dpTable, setTable] = useState();
 
     useEffect(() => {
-        let mockTable = new Array(weights.length + 1)
-          .fill()
-          .map((arr) => new Array(maxCapacity + 1).fill(0));
+        let mockTable = createTable(weights.length+1, maxCapacity+1)
         setTable(mockTable);
         setCoords([0, 0])
         setMaxCapacity(10)
