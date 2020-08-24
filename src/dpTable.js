@@ -42,12 +42,14 @@ const DynamicProgrammingTable = ({ numRows, numCols, dpTable, currCoords, currWe
 
 function getHighlightVal(idx, jdx, currI, currJ, currWeight) { // what currently on, what looking for
   if (idx + 1 === currI && jdx === currJ) { // above
-    if (jdx < currWeight) {
       return "blue"
-    }
   }
   if (idx === currI && jdx === currJ) {
     return "highlight"
+  }
+  // last condition, if (currJ - currWeight >= 0)  && idx === currI - 1 && jdx === currJ - currWEight
+  if (currJ - currWeight >= 0 && idx === currI - 1 && jdx === currJ - currWeight) {
+    return "green"
   }
   return `${idx}-${jdx}`;
 }
