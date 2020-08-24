@@ -6,13 +6,18 @@ function knapsackProblem(items, capacity) {
     .map((arr) => new Array(capacity + 1).fill(0));
 
   // since the first row and column will be zero regardless, can start at [1,1]
-  let item = 1;
-  let currCapacity = 1;
+  let item = 0;
+  let currCapacity = 0;
 
   // delayedLoop closes over knapsackProblem scoped vars and runs one iteration each call
   function delayedLoop() {
     // if both item (represented by each row) and currCapacity (represented by column idx) are valid...
-    if (item < table.length && currCapacity < table[0].length) {
+    if (item < table.length && currCapacity < table[0].length) { // first row/col are zeroes
+      if (item === 0 || currCapacity === 0) {
+        table[item][currCapacity] = 0;
+        currCapacity++;
+        return [item, currCapacity, table];
+      }
       // grab the value/weight of current item (-1 because zero-based)
       const [currValue, currWeight] = items[item - 1];
       // grab the prevMax that we could have, which is the same capacity but one fewer item
@@ -33,9 +38,9 @@ function knapsackProblem(items, capacity) {
       item++;
       currCapacity = 1;
     } else if (item >= table.length) { // we've gone past final row, table is filled in, just return
-      return table;
+      return [item, currCapacity, table];
     }
-    return table;
+    return [item, currCapacity, table];
   }
 
   return delayedLoop;

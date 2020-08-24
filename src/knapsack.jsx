@@ -2,18 +2,23 @@ import React, {useState, useEffect} from 'react';
 import CapacityChart from './capacityBar'
 import 'babel-polyfill'
 import DynamicProgrammingTable from './dpTable';
+import knapsackProblem from './knapsackProblem';
 
 const Knapsack = ({stepFunc}) => {
     const [data, setData] = useState([]);
     const [maxCapacity, setMaxCapacity] = useState(10);
     const [i, setI] = useState(0)
-    const weights = [[2], [3], [6], [7]]
-    const values = [[1], [4], [5], [6]]
+    const weights = [[0], [2], [3], [6], [7]]
+    const values = [[0], [1], [4], [5], [6]]
+    const [currCoords, setCoords] = useState([0, 0]);
     const [algoI, setalgoI] = useState(0);
     const [dpTable, setTable] = useState();
 
     useEffect(() => {
-        setTable(stepFunc());
+        const [i, j, table] = stepFunc()
+        setTable(table);
+        setCoords([i, j])
+        console.log(currCoords);
         setMaxCapacity(10)
     }, []);
 
@@ -25,9 +30,12 @@ const Knapsack = ({stepFunc}) => {
 
     // update the table if the algorithm iteration changes
     useEffect(() => {
-        setTable(stepFunc());
+        const [i, j, table] = stepFunc();
+        setTable(table);
+        setCoords([i, j]);
+        console.log(currCoords)
         // FIX BELOW LOGIC, needs some modulo, setalgoI called here doubles up stepFunc
-        if (dpTable && algoI % (dpTable[0].length - 1) === 0) {
+        if (dpTable && currCoords[1] === table[0].length) {
             changeData();
         }
     }, [algoI])

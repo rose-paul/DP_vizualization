@@ -1,5 +1,4 @@
 import React from "react";
-import knapsackProblem from "./knapsackProblem";
 
 
 const DynamicProgrammingTable = ({ numRows, numCols, dpTable}) => {
