@@ -4,7 +4,7 @@ import 'babel-polyfill'
 import DynamicProgrammingTable from './dpTable';
 import createTable from './createTable';
 
-const Knapsack = ({stepFunc}) => {
+const Knapsack = ({stepFunc}) => { // eventually, take props from user input
     const [data, setData] = useState([]);
     const [maxCapacity, setMaxCapacity] = useState(10);
     const [i, setI] = useState(0)
@@ -56,7 +56,7 @@ const Knapsack = ({stepFunc}) => {
                 <CapacityChart width={40} height={500} data={[data[0]]} maxCapacity={maxCapacity} />
                 <span>currItemWeight: {data[0]}, currItemValue: {data[1]}</span>
             </div>
-            <DynamicProgrammingTable numRows={5} numCols={10} dpTable={dpTable} currCoords={currCoords} currWeight={data[0]} />
+            <DynamicProgrammingTable dpTable={dpTable} currCoords={currCoords} currWeight={data[0]} />
             <button onClick={() => setalgoI(oldI => oldI+1)}>Next!</button>
         </div>
     );

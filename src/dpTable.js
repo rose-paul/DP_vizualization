@@ -1,7 +1,7 @@
 import React from "react";
 
 
-const DynamicProgrammingTable = ({ numRows, numCols, dpTable, currCoords, currWeight }) => {
+const DynamicProgrammingTable = ({ dpTable, currCoords, currWeight }) => {
   // const dpTable = new Array(numRows).fill().map( el => new Array(numCols+1).fill(0));
   // sleep 1 at end of each loop
 

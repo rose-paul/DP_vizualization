@@ -3,7 +3,7 @@ import Knapsack from './knapsack';
 import knapsackProblem from './knapsackProblem';
 
 const App = () => {
-    const [currVisual, setVisual] = React.useState(<Knapsack />);
+
     const stepFunc = knapsackProblem(
       [
         [1, 2],
