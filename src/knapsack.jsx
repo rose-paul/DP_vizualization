@@ -2,7 +2,6 @@ import React, {useState, useEffect} from 'react';
 import CapacityChart from './capacityBar'
 import 'babel-polyfill'
 import DynamicProgrammingTable from './dpTable';
-import knapsackProblem from './knapsackProblem';
 
 const Knapsack = ({stepFunc}) => {
     const [data, setData] = useState([]);
@@ -58,7 +57,7 @@ const Knapsack = ({stepFunc}) => {
                 <CapacityChart width={40} height={500} data={[data[0]]} maxCapacity={maxCapacity} />
                 <span>currItemWeight: {data[0]}, currItemValue: {data[1]}</span>
             </div>
-            <DynamicProgrammingTable numRows={5} numCols={10} dpTable={dpTable} currCoords={currCoords} />
+            <DynamicProgrammingTable numRows={5} numCols={10} dpTable={dpTable} currCoords={currCoords} currWeight={data[0]} />
             <button onClick={() => setalgoI(oldI => oldI+1)}>Next!</button>
         </div>
     );

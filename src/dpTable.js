@@ -1,7 +1,7 @@
 import React from "react";
 
 
-const DynamicProgrammingTable = ({ numRows, numCols, dpTable, currCoords }) => {
+const DynamicProgrammingTable = ({ numRows, numCols, dpTable, currCoords, currWeight }) => {
   // const dpTable = new Array(numRows).fill().map( el => new Array(numCols+1).fill(0));
   // sleep 1 at end of each loop
 
@@ -27,7 +27,7 @@ const DynamicProgrammingTable = ({ numRows, numCols, dpTable, currCoords }) => {
                 {row.map((val, jdx) => (
                   <td 
                   key={`${idx}-${jdx}`}
-                  className={idx === currCoords[0] && jdx === currCoords[1] ? "highlight" : `${idx}-${jdx}`}>{val}</td>
+                  className={getHighlightVal(idx, jdx, currCoords[0], currCoords[1], currWeight)}>{val}</td>
                 ))}
               </tr>
             );
@@ -39,5 +39,17 @@ const DynamicProgrammingTable = ({ numRows, numCols, dpTable, currCoords }) => {
     <p>updating</p>
   );
 };
+
+function getHighlightVal(idx, jdx, currI, currJ, currWeight) { // what currently on, what looking for
+  if (idx + 1 === currI && jdx === currJ) { // above
+    if (jdx < currWeight) {
+      return "blue"
+    }
+  }
+  if (idx === currI && jdx === currJ) {
+    return "highlight"
+  }
+  return `${idx}-${jdx}`;
+}
 
 export default DynamicProgrammingTable;
