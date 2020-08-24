@@ -15,17 +15,17 @@ const Knapsack = ({stepFunc}) => {
     const [dpTable, setTable] = useState();
 
     useEffect(() => {
-        const [i, j, table] = stepFunc()
-        setTable(table);
-        setCoords([i, j])
-        console.log(currCoords);
+        let mockTable = new Array(weights.length + 1)
+          .fill()
+          .map((arr) => new Array(maxCapacity + 1).fill(0));
+        setTable(mockTable);
+        setCoords([0, 0])
         setMaxCapacity(10)
     }, []);
 
     // update the data if the idx changes
     useEffect(() => {
         setData([weights[i], values[i]]);
-
     }, [i]) 
 
     // update the table if the algorithm iteration changes
@@ -33,8 +33,6 @@ const Knapsack = ({stepFunc}) => {
         const [i, j, table] = stepFunc();
         setTable(table);
         setCoords([i, j]);
-        console.log(currCoords)
-        // FIX BELOW LOGIC, needs some modulo, setalgoI called here doubles up stepFunc
         if (dpTable && currCoords[1] === table[0].length) {
             changeData();
         }

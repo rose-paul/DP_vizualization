@@ -13,8 +13,12 @@ function knapsackProblem(items, capacity) {
   function delayedLoop() {
     // if both item (represented by each row) and currCapacity (represented by column idx) are valid...
     if (item < table.length && currCapacity < table[0].length) { // first row/col are zeroes
+      if (item === 0 && currCapacity === 0) {
+        currCapacity++;
+        return [item, currCapacity, table];
+
+      }
       if (item === 0 || currCapacity === 0) {
-        table[item][currCapacity] = 0;
         currCapacity++;
         return [item, currCapacity, table];
       }

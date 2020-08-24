@@ -5,8 +5,8 @@ const DynamicProgrammingTable = ({ numRows, numCols, dpTable, currCoords }) => {
   // const dpTable = new Array(numRows).fill().map( el => new Array(numCols+1).fill(0));
   // sleep 1 at end of each loop
 
-  React.useEffect(() => {}, [dpTable]);
-
+  React.useEffect(() => {}, [dpTable, currCoords]);
+  console.log(currCoords)
   return dpTable !== undefined ? (
     <div>
       <h3>Items (left), Capacity (top)</h3>
@@ -25,8 +25,9 @@ const DynamicProgrammingTable = ({ numRows, numCols, dpTable, currCoords }) => {
               <tr>
                 <th className="vertical-header">{idx}</th>
                 {row.map((val, jdx) => (
-                  <td className="data-point" 
-                  className={idx === currCoords[0] && jdx === currCoords[1] ? "highlight" : null}>{val}</td>
+                  <td 
+                  key={`${idx}-${jdx}`}
+                  className={idx === currCoords[0] && jdx === currCoords[1] ? "highlight" : `${idx}-${jdx}`}>{val}</td>
                 ))}
               </tr>
             );
