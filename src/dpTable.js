@@ -27,7 +27,7 @@ const DynamicProgrammingTable = ({ numRows, numCols, dpTable, currCoords, currWe
                 {row.map((val, jdx) => (
                   <td 
                   key={`${idx}-${jdx}`}
-                  className={getHighlightVal(idx, jdx, currCoords[0], currCoords[1], currWeight)}>{val}</td>
+                  className={idx < 5 && jdx < 11 ? getHighlightVal(idx, jdx, currCoords[0], currCoords[1], currWeight) : ""}>{val}</td>
                 ))}
               </tr>
             );
