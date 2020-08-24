@@ -3,6 +3,7 @@ import CapacityChart from './capacityBar'
 import 'babel-polyfill'
 import DynamicProgrammingTable from './dpTable';
 import createTable from './createTable';
+import ProblemData from './problemData';
 
 const Knapsack = ({stepFunc}) => { // eventually, take props from user input
     const [data, setData] = useState([]);
@@ -46,13 +47,9 @@ const Knapsack = ({stepFunc}) => { // eventually, take props from user input
 
     return (
         <div className="knapsack-outer">
-            <div>
-                <h3>Input</h3>
-                <p>weights: {weights}</p>
-                <p>values: {values}</p>
-                <p>capacity: {maxCapacity}</p>
-            </div>
+            <ProblemData weights={weights} values={values} capacity={maxCapacity} />
             <div className="knapsack-inner">
+                {/* add current bag capacity here */}
                 <CapacityChart width={40} height={500} data={[data[0]]} maxCapacity={maxCapacity} />
                 <span>currItemWeight: {data[0]}, currItemValue: {data[1]}</span>
             </div>
