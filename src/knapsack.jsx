@@ -49,7 +49,7 @@ const Knapsack = ({stepFunc}) => {
                 <p>capacity: {maxCapacity}</p>
             </div>
             <div className="knapsack-inner">
-                <CapacityChart width={40} height={500} data={data} maxCapacity={maxCapacity} />
+                <CapacityChart width={40} height={500} data={[data[0]]} maxCapacity={maxCapacity} />
                 <span>currItemWeight: {data[0]}, currItemValue: {data[1]}</span>
             </div>
             <DynamicProgrammingTable numRows={5} numCols={10} dpTable={dpTable} />
