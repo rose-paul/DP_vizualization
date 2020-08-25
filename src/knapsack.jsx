@@ -46,7 +46,7 @@ const Knapsack = ({stepFunc, problemInput}) => { // eventually, take props from 
 
     return (
         <div className="knapsack-outer">
-            <ProblemData weights={problemInput.weights} values={problemInput.values} maxCapacity={problemInput.capacity} />
+            <ProblemData weights={problemInput.weights} values={problemInput.values} maxCapacity={problemInput.capacity} dataIndex={dataIndex} />
             <div className="knapsack-inner--capacity">
                 {/* add current bag capacity here */}
                 <CapacityChart width={40} height={500} data={[data[0]]} maxCapacity={problemInput.capacity} />

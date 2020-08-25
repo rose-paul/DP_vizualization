@@ -1,6 +1,6 @@
 import React from 'react';
 
-const ProblemData = ({ weights, values, maxCapacity }) => (
+const ProblemData = ({ weights, values, maxCapacity, dataIndex }) => (
   <div className="knapsack-inner--input">
     <h3>Input</h3>
     <p>
@@ -10,15 +10,15 @@ const ProblemData = ({ weights, values, maxCapacity }) => (
       <tbody>
         <tr>
           <th>Weights</th>
-          {weights.map((weight) => (
-            <td>{weight}</td>
+          {weights.map((weight, idx) => (
+            <td className={idx === dataIndex ? "highlight" : ""}>{weight}</td>
           ))}
         </tr>
 
         <tr>
           <th>Values</th>
-          {values.map((value) => (
-            <td>{value}</td>
+          {values.map((value, idx) => (
+            <td className={idx === dataIndex ? "highlight" : ""}>{value}</td>
           ))}
         </tr>
       </tbody>
