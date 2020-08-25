@@ -13,8 +13,18 @@
 .knapsack-inner--input {
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
+    justify-content: center;
     align-items: center;
+}
+
+.knapsack-inner--input > * {
+    margin: 10px;
+}
+
+td {
+    border: 1px solid black;
+    margin: 0px;
+    padding: 0px;
 }
 
 .knapsack-inner--capacity {
