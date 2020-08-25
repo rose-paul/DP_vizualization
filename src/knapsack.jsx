@@ -8,15 +8,14 @@ import ProblemData from './problemData'
 const Knapsack = ({stepFunc, problemInput}) => { // eventually, take props from user input
     
     const [data, setData] = useState([]); // [weight, value] of current item
-    const [dataIndex, setI] = useState(0) // index of given weight, value in input
+    const [dataIndex, setI] = useState(0) // index of given [weight, value] in input
 
     const [currCoords, setCoords] = useState([0, 0]); // current spot on table to fill
-    const [algorithmIteration, setalgoI] = useState(0); // useEffect listener, when click "next", this updates and updates table/bar
     const [dpTable, setTable] = useState(); // table to render
 
     useEffect(() => {
-        // mocktable, calling stepFunc prop here will start at wrong coord
-        let mockTable = createTable(problemInput.weights.length+1, problemInput.capacity+1)
+        // mock table, calling stepFunc prop here will start at wrong coord
+        let mockTable = createTable(problemInput.weights.length, problemInput.capacity+1)
         setTable(mockTable);
         setCoords([0, 0])
     }, []);
@@ -26,15 +25,16 @@ const Knapsack = ({stepFunc, problemInput}) => { // eventually, take props from 
         setData([problemInput.weights[dataIndex], problemInput.values[dataIndex]]);
     }, [dataIndex]) 
 
-    useEffect(() => {
-        // update the table click next
+
+    // click handler for 'next' button, updates table values/capacity
+    const takeAlgoStep = () => {
         const [i, j, table] = stepFunc();
         setTable(table);
         setCoords([i, j]);
         if (dpTable && currCoords[1] === table[0].length) {
             changeData();
         }
-    }, [algorithmIteration])
+    }
 
     // to change idx of current data
     const changeData = () => {
@@ -54,7 +54,7 @@ const Knapsack = ({stepFunc, problemInput}) => { // eventually, take props from 
             </div>
             <div className="knapsack-inner--steps">
                 <DynamicProgrammingTable dpTable={dpTable} currCoords={currCoords} currWeight={data[0]} />
-                <button onClick={() => setalgoI(oldI => oldI+1)}>Next!</button>
+                <button onClick={takeAlgoStep}>Next!</button>
             </div>
         </div>
     );
