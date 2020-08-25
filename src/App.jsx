@@ -4,6 +4,12 @@ import knapsackProblem from './knapsackProblem';
 
 const App = () => {
 
+    const problemInput = {
+        weights: [[0], [2], [3], [6], [7]],
+        values: [[0], [1], [4], [5], [6]],
+        capacity: 10
+    }
+
     const stepFunc = knapsackProblem(
       [
         [1, 2],
@@ -13,9 +19,10 @@ const App = () => {
       ],
       10
     );
+
     return (
         // <NavBar />
-        <Knapsack stepFunc={stepFunc} />
+        <Knapsack stepFunc={stepFunc} problemInput={problemInput} />
     )
 }
 
