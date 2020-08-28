@@ -4,6 +4,7 @@ import 'babel-polyfill'
 import DynamicProgrammingTable from './dpTable';
 import createTable from './createTable';
 import ProblemData from './problemData'
+import KnapsackDescription from './KnapsackDescription';
 
 const Knapsack = ({stepFunc, problemInput}) => { // eventually, take props from user input
     
@@ -54,33 +55,31 @@ const Knapsack = ({stepFunc, problemInput}) => { // eventually, take props from 
 
     return dpTable && currCoords ? (
       <div className="knapsack-outer">
-        <div className="knapsack-inner--capacity">
-            <span>
-              Current Capacity: {currCapacity} / {10}
-            </span>
-            <CapacityChart
-              width={40}
-              height={500}
-              data={[currCapacity]}
-              maxCapacity={problemInput.capacity}
-            />
-            <span>
-              currItemWeight: {data[0]}, currItemValue: {data[1]}
-            </span>
-        </div>
+        <KnapsackDescription />
         <div className="knapsack-inner--datacol">
-            <ProblemData
-              weights={problemInput.weights}
-              values={problemInput.values}
-              maxCapacity={problemInput.capacity}
-              dataIndex={dataIndex}
-            />
-              <DynamicProgrammingTable
-                dpTable={dpTable}
-                currCoords={currCoords}
-                currWeight={data[0]}
-              />
+          <ProblemData
+            weights={problemInput.weights}
+            values={problemInput.values}
+            maxCapacity={problemInput.capacity}
+            dataIndex={dataIndex}
+          />
+          <DynamicProgrammingTable
+            dpTable={dpTable}
+            currCoords={currCoords}
+            currWeight={data[0]}
+          />
           <button onClick={takeAlgoStep}>Next!</button>
+        </div>
+        <div className="knapsack-inner--capacity">
+          <span>
+            <b>Current Capacity: {currCapacity} / 10</b>
+          </span>
+          <CapacityChart
+            width={40}
+            height={500}
+            data={[currCapacity]}
+            maxCapacity={problemInput.capacity}
+          />
         </div>
       </div>
     ) : (

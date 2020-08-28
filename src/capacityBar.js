@@ -8,7 +8,7 @@ function CapacityBar({ width, height, data }) {
         const svg = d3.select(ref.current)
             .attr("width", width)
             .attr("height", height)
-            .style("border", "1px solid black")
+            .style("border", "1px solid white")
     }, []);
 
     useEffect(() => {
@@ -35,7 +35,7 @@ function CapacityBar({ width, height, data }) {
             .attr("y", (d) => height)
             .attr("width", 40)
             .attr("height", 0)
-            .attr("fill", "orange")
+            .attr("fill", "gray")
             .transition().duration(300)
             .attr("height", (d) => yScale(d))
             .attr("y", (d) => yScale(d))

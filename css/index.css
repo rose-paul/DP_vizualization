@@ -20,6 +20,18 @@ h3 {
     padding-top: 20px;
 }
 
+.knapsack-outer > * {
+    flex: 1;
+}
+
+.knapsack-inner--description {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    padding: 2%;
+}
+
 .knapsack-inner--input {
     display: flex;
     flex-direction: column;
