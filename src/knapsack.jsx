@@ -12,11 +12,13 @@ const Knapsack = ({stepFunc, problemInput}) => { // eventually, take props from 
 
     const [currCoords, setCoords] = useState([0, 0]); // current spot on table to fill
     const [dpTable, setTable] = useState(); // table to render
+    const [capacityTable, setCTable] = useState(); // capacity at each step for display
 
     useEffect(() => {
         // mock table, calling stepFunc prop here will start at wrong coord
         let mockTable = createTable(problemInput.weights.length, problemInput.capacity+1)
         setTable(mockTable);
+        setCTable(mockTable);
         setCoords([0, 0])
     }, []);
 
@@ -28,8 +30,9 @@ const Knapsack = ({stepFunc, problemInput}) => { // eventually, take props from 
 
     // click handler for 'next' button, updates table values/capacity
     const takeAlgoStep = () => {
-        const [i, j, table] = stepFunc();
+        const [i, j, table, cTable] = stepFunc();
         setTable(table);
+        setCTable(cTable)
         setCoords([i, j]);
         if (dpTable && currCoords[1] === table[0].length) {
             changeData();
@@ -43,20 +46,42 @@ const Knapsack = ({stepFunc, problemInput}) => { // eventually, take props from 
         }
         setI(dataIndex + 1);
     }
-
-    return (
-        <div className="knapsack-outer">
-            <ProblemData weights={problemInput.weights} values={problemInput.values} maxCapacity={problemInput.capacity} dataIndex={dataIndex} />
-            <div className="knapsack-inner--capacity">
-                {/* add current bag capacity here */}
-                <CapacityChart width={40} height={500} data={[data[0]]} maxCapacity={problemInput.capacity} />
-                <span>currItemWeight: {data[0]}, currItemValue: {data[1]}</span>
-            </div>
-            <div className="knapsack-inner--steps">
-                <DynamicProgrammingTable dpTable={dpTable} currCoords={currCoords} currWeight={data[0]} />
-                <button onClick={takeAlgoStep}>Next!</button>
-            </div>
+    console.log(capacityTable)
+    console.log(currCoords)
+    return capacityTable ? (
+      <div className="knapsack-outer">
+        <ProblemData
+          weights={problemInput.weights}
+          values={problemInput.values}
+          maxCapacity={problemInput.capacity}
+          dataIndex={dataIndex}
+        />
+        <div className="knapsack-inner--capacity">
+          <span>
+            Current Capacity: {capacityTable[currCoords[0]][currCoords[1] - 1]}{" "}
+            / {10}
+          </span>
+          <CapacityChart
+            width={40}
+            height={500}
+            data={[capacityTable[currCoords[0]][currCoords[1] - 1]]}
+            maxCapacity={problemInput.capacity}
+          />
+          <span>
+            currItemWeight: {data[0]}, currItemValue: {data[1]}
+          </span>
         </div>
+        <div className="knapsack-inner--steps">
+          <DynamicProgrammingTable
+            dpTable={dpTable}
+            currCoords={currCoords}
+            currWeight={data[0]}
+          />
+          <button onClick={takeAlgoStep}>Next!</button>
+        </div>
+      </div>
+    ) : (
+      ""
     );
 }
 
