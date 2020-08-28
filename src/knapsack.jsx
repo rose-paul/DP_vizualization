@@ -54,37 +54,40 @@ const Knapsack = ({stepFunc, problemInput}) => { // eventually, take props from 
 
     return dpTable && currCoords ? (
       <div className="knapsack-outer">
-        <ProblemData
-          weights={problemInput.weights}
-          values={problemInput.values}
-          maxCapacity={problemInput.capacity}
-          dataIndex={dataIndex}
-        />
         <div className="knapsack-inner--capacity">
-          <span>
-            Current Capacity: {currCapacity}{" "}
-            / {10}
-          </span>
-          <CapacityChart
-            width={40}
-            height={500}
-            data={[currCapacity]}
-            maxCapacity={problemInput.capacity}
-          />
-          <span>
-            currItemWeight: {data[0]}, currItemValue: {data[1]}
-          </span>
+            <span>
+              Current Capacity: {currCapacity} / {10}
+            </span>
+            <CapacityChart
+              width={40}
+              height={500}
+              data={[currCapacity]}
+              maxCapacity={problemInput.capacity}
+            />
+            <span>
+              currItemWeight: {data[0]}, currItemValue: {data[1]}
+            </span>
         </div>
-        <div className="knapsack-inner--steps">
-          <DynamicProgrammingTable
-            dpTable={dpTable}
-            currCoords={currCoords}
-            currWeight={data[0]}
-          />
+        <div className="knapsack-inner--datacol">
+            <ProblemData
+              weights={problemInput.weights}
+              values={problemInput.values}
+              maxCapacity={problemInput.capacity}
+              dataIndex={dataIndex}
+            />
+            <div className="knapsack-inner--steps">
+              <DynamicProgrammingTable
+                dpTable={dpTable}
+                currCoords={currCoords}
+                currWeight={data[0]}
+              />
+            </div>
           <button onClick={takeAlgoStep}>Next!</button>
         </div>
       </div>
-    ) : "";
+    ) : (
+      ""
+    );
 }
 
 function isValidPosition(coords) {

@@ -23,10 +23,11 @@
     margin: 10px;
 }
 
-td {
-    border: 1px solid white;
-    margin: 0px;
-    padding: 0px;
+.knapsack-inner--datacol {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
 }
 
 .knapsack-inner--capacity {
@@ -41,6 +42,15 @@ td {
     align-items: center;
 }
 
+button {
+    background-color: white;
+    color: black;
+    padding: 10px 30px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
 /* table */
 
 .vertical-header {
@@ -52,7 +62,9 @@ td {
 }
 
 td {
-    padding: 5px;
+    border: 1px solid white;
+    margin: 0px;
+    padding: 10px;
     text-align: center;
 }
 
