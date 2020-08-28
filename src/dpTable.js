@@ -2,11 +2,8 @@ import React from "react";
 
 
 const DynamicProgrammingTable = ({ dpTable, currCoords, currWeight }) => {
-  // const dpTable = new Array(numRows).fill().map( el => new Array(numCols+1).fill(0));
-  // sleep 1 at end of each loop
 
   React.useEffect(() => {}, [dpTable, currCoords]);
-  console.log(currCoords)
   return dpTable !== undefined ? (
     <div>
       <h3>Items (left), Capacity (top)</h3>
