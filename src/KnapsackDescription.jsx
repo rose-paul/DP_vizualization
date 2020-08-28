@@ -4,8 +4,7 @@ const KnapsackDescription = () => (
   <div className="knapsack-inner--description">
     <div>
       <p>
-        The Knapsack Problem is a classic Dynamic Programming algorithm. The
-        problem is as follows:
+        <b>Problem Description</b>
       </p>
       <ul>
         <li>You're given a knapsack with a maximum capacity.</li>
@@ -17,8 +16,7 @@ const KnapsackDescription = () => (
     </div>
     <div>
       <p>
-        We can use a table to find the solution. We operate with two base
-        cases:
+        <b>Important Base Cases</b>
       </p>
       <ul>
         <li>
@@ -32,21 +30,23 @@ const KnapsackDescription = () => (
       </ul>
     </div>
     <div>
-        <p>
-          Each time you hit the "next" button, the algorithm will
-          do one iteration to fill in the table.
-        </p>
-        <ul>
-          <li>The current cell is highlighted red.</li>
-          <li>The previous maximum value is highlighted blue.</li>
-          <li>
-            If we "take" the current item (and its associated value), the potential added value we can get is
-            green.
-          </li>
-          <li>
-            The current item considered is highlighted red in the Input table.
-          </li>
-        </ul>
+      <p>
+        <b>How to Use:</b>
+      </p>
+      <ul>
+        <li>
+          Hit "next" to do one iteration.
+        </li>
+        <li>The current cell is highlighted red.</li>
+        <li>The previous maximum value is highlighted blue.</li>
+        <li>
+          If we "take" the current item (and its associated value), 
+          we have space to add the green value as well.
+        </li>
+        <li>
+          The current item is highlighted red in the Input table.
+        </li>
+      </ul>
     </div>
     <p>Try and spot the pattern! Can you think of a way to optimize space?</p>
   </div>
