@@ -2,6 +2,8 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  background: rgb(36, 36, 36);
+  color: white;
 }
 
 .knapsack-outer {
@@ -22,7 +24,7 @@
 }
 
 td {
-    border: 1px solid black;
+    border: 1px solid white;
     margin: 0px;
     padding: 0px;
 }
