@@ -48,7 +48,7 @@ const KnapsackDescription = () => (
           </li>
         </ul>
     </div>
-    <p>Try and spot the pattern!</p>
+    <p>Try and spot the pattern! Can you think of a way to optimize space?</p>
   </div>
 );
 
