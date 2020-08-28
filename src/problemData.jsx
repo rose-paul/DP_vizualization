@@ -4,7 +4,7 @@ const ProblemData = ({ weights, values, maxCapacity, dataIndex }) => (
   <div className="knapsack-inner--input">
     <h3>Input</h3>
     <p>
-      <b>Knapsack Capacity</b> {maxCapacity}
+      <b>Items</b> 
     </p>
     <table>
       <tbody>
@@ -23,6 +23,7 @@ const ProblemData = ({ weights, values, maxCapacity, dataIndex }) => (
         </tr>
       </tbody>
     </table>
+    <b>Max Knapsack Capacity: {maxCapacity}</b>
   </div>
 );
 

@@ -5,7 +5,7 @@ const DynamicProgrammingTable = ({ dpTable, currCoords, currWeight }) => {
 
   React.useEffect(() => {}, [dpTable, currCoords]);
   return dpTable !== undefined ? (
-    <div>
+    <div className="knapsack-inner--steps">
       <h3>Items (left), Capacity (top)</h3>
       <table>
         <thead>

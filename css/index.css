@@ -15,8 +15,10 @@
 .knapsack-inner--input {
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
+    padding-bottom: 8%;
+    margin-bottom: 8%;
+    border-bottom: 4px solid white;
 }
 
 .knapsack-inner--input > * {
@@ -26,8 +28,8 @@
 .knapsack-inner--datacol {
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
     align-items: center;
+    justify-content: space-between;
 }
 
 .knapsack-inner--capacity {

@@ -75,13 +75,11 @@ const Knapsack = ({stepFunc, problemInput}) => { // eventually, take props from 
               maxCapacity={problemInput.capacity}
               dataIndex={dataIndex}
             />
-            <div className="knapsack-inner--steps">
               <DynamicProgrammingTable
                 dpTable={dpTable}
                 currCoords={currCoords}
                 currWeight={data[0]}
               />
-            </div>
           <button onClick={takeAlgoStep}>Next!</button>
         </div>
       </div>
