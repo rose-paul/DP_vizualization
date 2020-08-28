@@ -21,7 +21,7 @@ const App = () => {
     );
 
     return (
-        // <NavBar />
+        // <InputSelection />
         <Knapsack stepFunc={stepFunc} problemInput={problemInput} />
     )
 }
