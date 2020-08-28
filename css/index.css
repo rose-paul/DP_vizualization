@@ -6,10 +6,18 @@
   color: white;
 }
 
+h1 {
+    text-align: center;
+}
+
+h3 {
+    margin: 0 !important;
+}
+
 .knapsack-outer {
     display: flex;
     justify-content: space-around;
-    padding-top: 30px;
+    padding-top: 20px;
 }
 
 .knapsack-inner--input {

@@ -21,8 +21,11 @@ const App = () => {
     );
 
     return (
-        // <NavBar />
+      <div className="App">
+        <h1>Knapsack Algorithm Visualization</h1>
         <Knapsack stepFunc={stepFunc} problemInput={problemInput} />
+      </div>
+        // <NavBar />
     )
 }
 
