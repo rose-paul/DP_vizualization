@@ -1,7 +1,8 @@
 function createTable(numRows, numCols) {
-    return new Array(numRows)
+    let table = new Array(numRows)
     .fill()
-    .map((arr) => new Array(numCols).fill(0));
+    .map((arr) => new Array(numCols).fill([0, 0]));
+    return table;
 }
 
 export default createTable;

@@ -11,14 +11,12 @@ const Knapsack = ({stepFunc, problemInput}) => { // eventually, take props from 
     const [dataIndex, setI] = useState(0) // index of given [weight, value] in input
 
     const [currCoords, setCoords] = useState([0, 0]); // current spot on table to fill
-    const [dpTable, setTable] = useState(); // table to render
-    const [capacityTable, setCTable] = useState(); // capacity at each step for display
+    const [dpTable, setTable] = useState(); // table to render and get capacity data
 
     useEffect(() => {
         // mock table, calling stepFunc prop here will start at wrong coord
         let mockTable = createTable(problemInput.weights.length, problemInput.capacity+1)
         setTable(mockTable);
-        setCTable(mockTable);
         setCoords([0, 0])
     }, []);
 
@@ -30,9 +28,8 @@ const Knapsack = ({stepFunc, problemInput}) => { // eventually, take props from 
 
     // click handler for 'next' button, updates table values/capacity
     const takeAlgoStep = () => {
-        const [i, j, table, cTable] = stepFunc();
+        const [i, j, table] = stepFunc();
         setTable(table);
-        setCTable(cTable)
         setCoords([i, j]);
         if (dpTable && currCoords[1] === table[0].length) {
             changeData();
@@ -47,7 +44,15 @@ const Knapsack = ({stepFunc, problemInput}) => { // eventually, take props from 
         setI(dataIndex + 1);
     }
 
-    return capacityTable ? (
+
+    let currCapacity;
+    if (dpTable && isValidPosition(currCoords, dpTable.length, dpTable[0].length)) {
+        currCapacity = dpTable[currCoords[0]][currCoords[1] - 1][1];
+    } else {
+        currCapacity = 0;
+    }
+
+    return dpTable && currCoords ? (
       <div className="knapsack-outer">
         <ProblemData
           weights={problemInput.weights}
@@ -57,13 +62,13 @@ const Knapsack = ({stepFunc, problemInput}) => { // eventually, take props from 
         />
         <div className="knapsack-inner--capacity">
           <span>
-            Current Capacity: {capacityTable[currCoords[0]][currCoords[1] - 1]}{" "}
+            Current Capacity: {currCapacity}{" "}
             / {10}
           </span>
           <CapacityChart
             width={40}
             height={500}
-            data={[capacityTable[currCoords[0]][currCoords[1] - 1]]}
+            data={[currCapacity]}
             maxCapacity={problemInput.capacity}
           />
           <span>
@@ -79,9 +84,12 @@ const Knapsack = ({stepFunc, problemInput}) => { // eventually, take props from 
           <button onClick={takeAlgoStep}>Next!</button>
         </div>
       </div>
-    ) : (
-      ""
-    );
+    ) : "";
+}
+
+function isValidPosition(coords, rows, cols) {
+    let [i, j] = coords;
+    return (i > 0 && j > 0 )
 }
 
 export default Knapsack;
