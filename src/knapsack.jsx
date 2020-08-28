@@ -46,8 +46,7 @@ const Knapsack = ({stepFunc, problemInput}) => { // eventually, take props from 
         }
         setI(dataIndex + 1);
     }
-    console.log(capacityTable)
-    console.log(currCoords)
+
     return capacityTable ? (
       <div className="knapsack-outer">
         <ProblemData
