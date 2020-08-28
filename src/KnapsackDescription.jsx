@@ -44,11 +44,11 @@ const KnapsackDescription = () => (
             green.
           </li>
           <li>
-            The current item considered is highlighted read in the Input table.
+            The current item considered is highlighted red in the Input table.
           </li>
         </ul>
     </div>
-    <p>Rather than say exactly how it works, see if you can spot the pattern yourself!</p>
+    <p>Try and spot the pattern!</p>
   </div>
 );
 
