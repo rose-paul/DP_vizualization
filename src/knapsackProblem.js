@@ -8,7 +8,7 @@ function knapsackProblem(items, capacity) {
 
   // delayedLoop closes over knapsackProblem scoped vars and runs one iteration each call
   function delayedLoop() {
-    // return what already have at end
+    // this means we're one past the final cell, so just return early to not error out
     if (item === table.length - 1 && currCapacity === table[0].length) {
       return [item, currCapacity, table];
     }

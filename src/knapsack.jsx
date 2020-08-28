@@ -87,7 +87,7 @@ const Knapsack = ({stepFunc, problemInput}) => { // eventually, take props from 
     ) : "";
 }
 
-function isValidPosition(coords, rows, cols) {
+function isValidPosition(coords) {
     let [i, j] = coords;
     return (i > 0 && j > 0 )
 }
