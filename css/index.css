@@ -8,8 +8,8 @@
 }
 
 #root {
-   height: 100vh;
-   width: 100vw;
+   /* height: 100vh;
+   width: 100vw; */
    display: flex;
    justify-content: center;
 }
@@ -32,7 +32,7 @@ h3 {
 .knapsack-outer {
     display: flex;
     justify-content: space-around;
-    padding-top: 20px;
+    padding-top: 10px;
 }
 
 .knapsack-outer > * {
@@ -103,6 +103,8 @@ td {
     margin: 0px;
     padding: 10px;
     text-align: center;
+    min-width: 30px;
+    min-height: 30px;
 }
 
 .highlight {
